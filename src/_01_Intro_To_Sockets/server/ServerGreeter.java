@@ -29,11 +29,12 @@ public class ServerGreeter extends Thread {
 
 			// 5. Make a try-catch block that checks for two types Exceptions:
 			// SocketTimeoutException and IOException.
+			
 			// Put steps 8 - 15 in the try block.
 			try {
 
 				// 8. Let the user know that the server is waiting for a client to connect.
-				JOptionPane.showMessageDialog(null, "Waiting for a client to connect.");
+				System.out.println("Waiting for client to connect");
 
 				// 9. Create an object of the Socket class and initialize it to
 				// serverSocket.accept();
@@ -44,7 +45,7 @@ public class ServerGreeter extends Thread {
 				Socket s = ss.accept();
 
 				// 10. Let the user know that the client has connected.
-				JOptionPane.showMessageDialog(null, "Client has connected.");
+				System.out.println("Client has connected.");
 
 				// 11. Create a DataInputStream object. When initializing it, use the Socket
 				// object you created in step 9 to call the getInputStream() method.
@@ -52,7 +53,7 @@ public class ServerGreeter extends Thread {
 
 				// 12. Print the message from the DataInputStream object using the readUTF()
 				// method
-				JOptionPane.showMessageDialog(null, dis.readUTF());
+				System.out.println(dis.readUTF());
 
 				// 13. Create a DataOutputStream object. When initializing it, use the Server
 				// object you created in step 9 to call the getOutputStream() method.
@@ -68,15 +69,15 @@ public class ServerGreeter extends Thread {
 				// 6. If the program catches a SockeTimeoutException, let the user know about it
 				// and set loop's boolean variable to false.
 			} catch (SocketTimeoutException e) {
-				JOptionPane.showMessageDialog(null, "Error: SocketTimeoutException");
-				b = false;
+				System.out.println("Error: SocketTimeoutException");
 				e.printStackTrace();
+				b = false;
 				// 7. If the program catches a IOException, let the user know about it and set
 				// the loop's boolean variable to false.
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "Error: IOException");
-				b = false;
+				System.out.println("Error: IOException");
 				e.printStackTrace();
+				b = false;
 			}
 		}
 	}
@@ -87,6 +88,7 @@ public class ServerGreeter extends Thread {
 		Thread t = new Thread(() -> {
 			try {
 				ServerGreeter sg = new ServerGreeter();
+				sg.run();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -9,18 +9,17 @@ public class ClientGreeter {
 		// 1. Create a String for the ip address of the server.
 		// If you don't know how to find a computer's ip address, ask about ifconfig on
 		// linux/mac and ipconfig on windows.
-		//String ip = "127.0.0.1";
+		String ip = "192.168.1.174";
 
 		// 2. Create an integer for the server's port number
-		//int port = 8080;
+		int port = 8080;
 
 		// 3. Surround steps 4-9 in a try-catch block that catches any IOExceptions.
 		try {
 
 			// 4. Create an object of the Socket class. When initializing the object, pass
 			// in the ip address and the port number
-			ServerSocket ss = new ServerSocket(0);
-			Socket s = ss.accept();
+			Socket s = new Socket(ip, port);
 
 			// 5. Create a DataOutputStream object. When initializing it, use the Socket
 			// object you created in step 4 to call the getOutputStream() method.
